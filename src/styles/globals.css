@@ -3,31 +3,82 @@
 @tailwind utilities;
 
 :root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
+  --foreground-color: rgb(94, 92, 127);
+  --background-color: rgb(248, 247, 253);
+  --container-color: rgb(255, 255, 255);
+  --primary-color: rgb(255, 107, 77);
+  --primary-bg: #ff985c4d;
+  --title-color: rgb(53, 50, 82);
+  --text-color: rgb(94, 92, 127);
+  --text-secondary: rgb(133, 131, 165);
+  --stroke-color: #e7e7e7;
+  --dots: url('../assets/dots-light.svg');
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
-  }
+.dark {
+  --foreground-color: rgb(159, 159, 159);
+  --background-color: rgb(34, 40, 49);
+  --container-color: rgb(49, 54, 63);
+  --primary-color: rgb(255, 159, 140);
+  --title-color: rgb(228, 230, 235);
+  --text-color: rgb(163, 163, 163);
+  --text-secondary: rgb(150, 150, 150);
+  --stroke-color: rgb(62, 68, 78);
+  --dots: url('../assets/dots-dark.svg');
+
 }
 
 body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+  color: var(--foreground-color);
+  background: var(--background-color);
+  
+}
+html {
+  scroll-behavior: smooth;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+  letter-spacing: .3px;
 }
 
 @layer utilities {
-  .text-balance {
-    text-wrap: balance;
+  .toggle {
+    @apply top-5 rounded-lg fixed cursor-pointer h-10 w-fit px-3 bg-container text-text border border-stroke flex justify-center items-center z-10 transition-all duration-300 ease-in-out;
   }
+
+  .transition-3s {
+    @apply transition-all duration-300 ease-in-out
+  }
+
+  .card {
+    @apply px-4 py-3 rounded-xl bg-container border border-stroke transition-3s
+  }
+
+  .btn {
+    @apply px-3 py-2 leading-4 justify-center rounded-md shadow-sm bg-[#ff985c4d] border border-[#ffa04666] text-primary flex gap-1 items-center font-normal text-sm w-fit hover:border-primary transition-3s
+  }
+
+  .hr {
+    @apply border-stroke my-5;
+  }
+
+  .dots {
+    @apply before:content-[''] before:absolute before:bg-dots before:h-9 before:w-9 before:-left-3 before:-top-3 before:-z-[1]
+  }
+
+  .form-input {
+    @apply absolute top-0 left-0 w-full h-full border border-slate-400 dark:border-slate-600 bg-background text-text rounded-xl p-6 z-[1];
+  }
+
+  .form-label {
+    @apply absolute -top-4 left-5 px-2 py-1 bg-background z-[2];
+  }
+
+  .form-control {
+    @apply relative mb-6 h-16 w-full;
+  }
+
+  .badge {
+    @apply flex gap-2 whitespace-nowrap items-center py-2 px-3 border border-stroke rounded-md bg-container text-text
+  }
+
 }
