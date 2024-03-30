@@ -5,7 +5,7 @@ import loginImage from '@/assets/login.jpg'
 const LoginForm = () => {
     return (
         <main className='flex justify-center items-center h-[100vh]'>
-            <div className="w-full max-w-md">
+            <div className="p-6 w-full max-w-md">
                 <div className='bg-container rounded-2xl border border-stroke  px-6 pt-7 pb-8 mb-4 text-center'>
                     <h1 className='texxt-title text-2xl'>Welcome Back</h1>
                     <h3 className='text-subtext'>{`Let's get started by signing in.`}</h3>
