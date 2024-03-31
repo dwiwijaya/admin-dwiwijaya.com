@@ -13,7 +13,6 @@ const ErrorInput = ({ error }) => {
         return <></>
     }
     const { type } = error;
-    console.log(error);
     const message = getErrorMsg(type);
     return (
         <p className='text-left mt-1 text-red-500 text-xs mb-3'>{message}</p>
