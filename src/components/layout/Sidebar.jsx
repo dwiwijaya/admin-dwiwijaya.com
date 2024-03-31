@@ -28,7 +28,7 @@ const Sidebar = () => {
                 setToggle(false);
             }
         };
-        // document.querySelector('main').classList.toggle('sidebar-expanded', toggle);
+        document.querySelector('main').classList.toggle('sidebar-expanded', toggle);
 
 
         document.addEventListener("mousedown", handleClickOutside);
