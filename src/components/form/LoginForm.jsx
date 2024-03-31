@@ -3,7 +3,7 @@ import loginImage from '@/assets/login.jpg'
 import { useForm } from 'react-hook-form';
 import ErrorInput from '../common/ErrorInput';
 import { SignIn } from '@/services/firebase';
-import WithUnprotected from '@/hoc/withUnProtected';
+import WithUnprotected from '@/hoc/withUnprotected';
 
 const LoginForm = () => {
     const {
