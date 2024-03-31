@@ -1,5 +1,6 @@
 import Overlay from "@/components/layout/Overlay";
 import Sidebar from "@/components/layout/Sidebar";
+import SignoutToggle from "@/components/toggles/SignoutToggle";
 import ThemeToggle from "@/components/toggles/ThemeToggle";
 import { AuthStateChangeProvicer } from "@/context/auth";
 import { UserProvider } from "@/context/user";
@@ -19,7 +20,7 @@ export default function App({ Component, pageProps }) {
         <AuthStateChangeProvicer>
 
           <ThemeToggle />
-
+          <SignoutToggle/>
           <Toaster
             toastOptions={{
               style: {
