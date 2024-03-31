@@ -4,6 +4,8 @@ import { useForm } from 'react-hook-form';
 import ErrorInput from '../common/ErrorInput';
 import { SignIn } from '@/services/firebase';
 import WithUnprotected from '@/hoc/withUnprotected';
+import toast from 'react-hot-toast';
+import { useState } from 'react';
 
 const LoginForm = () => {
     const {
@@ -12,15 +14,21 @@ const LoginForm = () => {
         watch,
         formState: { errors },
     } = useForm()
-
+    const [Loading, setLoading] = useState(false)
     const onSubmit = async (values) => {
         const { email, password } = values;
 
         try {
-            await SignIn(email, password)
-            console.log('success');
+            setLoading(true);
+            await SignIn(email, password);
+            toast.success("Sign in successful.");
+            console.log('Success');
         } catch (error) {
+            setLoading(false);
+            toast.error("Sign in failed.");
             console.log(error.code, error.message);
+        } finally {
+            setLoading(false);
         }
     }
 
@@ -43,7 +51,8 @@ const LoginForm = () => {
 
                         </div>
                         <button className="btn !w-full mb-3" type="submit">
-                            Sign In
+                            {Loading && <i className="bx bx-loader bx-spin"></i>}
+                            {Loading ? "Signing  ..." : "Sign in"}
                         </button>
                     </form>
                     <p className="text-center text-gray-500 text-xs">
