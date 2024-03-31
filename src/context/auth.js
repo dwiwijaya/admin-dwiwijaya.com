@@ -10,8 +10,10 @@ export  const AuthStateChangeProvicer = ({children}) => {
     const initiateAuthStateChange = () => {
         Authentication().onAuthStateChanged((user) => {
             if (user) {
+                console.log("user authenticated");
                 setUser({email: user.email, uuid: user.uid})
             } else {
+                console.log("user not authenticated");
                 setUser(InitialUserState)
             }
             setIsLoading(false)

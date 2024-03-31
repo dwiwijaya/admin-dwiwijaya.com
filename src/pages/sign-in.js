@@ -1,6 +1,7 @@
 import LoginForm from "@/components/form/LoginForm"
+import WithUnprotected from "@/hoc/withUnprotected"
 
-const login = () => {
+const SignIn = () => {
     return (
         <main>
             <LoginForm />
@@ -8,4 +9,4 @@ const login = () => {
     )
 }
 
-export default login
+export default WithUnprotected(SignIn)

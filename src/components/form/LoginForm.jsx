@@ -55,4 +55,4 @@ const LoginForm = () => {
     );
 };
 
-export default WithUnprotected(LoginForm);
+export default LoginForm
