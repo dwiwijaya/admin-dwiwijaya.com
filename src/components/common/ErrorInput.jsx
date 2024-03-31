@@ -3,9 +3,9 @@ import React from 'react'
 const getErrorMsg = (type) => {
     switch (type) {
         case 'minLength':
-            return "Jumlah karakter tidak memenui minumum"
+            return "The number of characters does not meet the minimum requirement.";
         case 'required':
-            return "Input required"
+            return "Input is required.";
     }
 }
 const ErrorInput = ({ error }) => {
