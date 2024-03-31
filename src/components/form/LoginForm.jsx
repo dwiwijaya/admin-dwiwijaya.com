@@ -1,8 +1,29 @@
 import Image from 'next/image';
-import React from 'react';
 import loginImage from '@/assets/login.jpg'
+import { useForm } from 'react-hook-form';
+import ErrorInput from '../common/ErrorInput';
+import { SignIn } from '@/services/firebase';
+import WithUnprotected from '@/hoc/withUnProtected';
 
 const LoginForm = () => {
+    const {
+        register,
+        handleSubmit,
+        watch,
+        formState: { errors },
+    } = useForm()
+
+    const onSubmit = async (values) => {
+        const { email, password } = values;
+
+        try {
+            await SignIn(email, password)
+            console.log('success');
+        } catch (error) {
+            console.log(error.code, error.message);
+        }
+    }
+
     return (
         <main className='flex justify-center items-center h-[100vh]'>
             <div className="p-6 w-full max-w-md">
@@ -10,21 +31,18 @@ const LoginForm = () => {
                     <h1 className='texxt-title text-2xl'>Welcome Back</h1>
                     <h3 className='text-subtext'>{`Let's get started by signing in.`}</h3>
                     <hr className="hr" />
-                    <form className="">
+                    <form className="" onSubmit={handleSubmit(onSubmit)}>
                         <div className="form-control">
-                            <label className="form-label !bg-container" for="username">
-                                Username
-                            </label>
-                            <input className="form-input !bg-container" id="username" type="email" placeholder="type your email" />
+                            <input {...register("email", { required: true })} type="email" className="form-input !bg-container " id="username" placeholder="type your email" />
+                            <ErrorInput error={errors.email} />
                         </div>
                         <div className="form-control">
-                            <label className="form-label !bg-container" for="password">
-                                Password
-                            </label>
-                            <input className="form-input !bg-container" id="password" type="password" placeholder="type your password" />
-                            <p className="text-red-500 text-xs italic">Please choose a password.</p>
+                            <input {...register("password", { required: true, minLength: 1 })} className="form-input !bg-container" id="password" type="password" placeholder="type your password" />
+                            {errors.password && <span className='text-red-700 absolute -bottom-[1rem] left-0'>This field is required</span>}
+                            <ErrorInput error={errors.password} />
+
                         </div>
-                        <button className="btn !w-full mb-3" type="button">
+                        <button className="btn !w-full mb-3" type="submit">
                             Sign In
                         </button>
                     </form>
@@ -37,4 +55,4 @@ const LoginForm = () => {
     );
 };
 
-export default LoginForm;
+export default WithUnprotected(LoginForm);

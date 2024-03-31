@@ -1,6 +1,8 @@
 import Overlay from "@/components/layout/Overlay";
 import Sidebar from "@/components/layout/Sidebar";
 import ThemeToggle from "@/components/toggles/ThemeToggle";
+import { AuthStateChangeProvicer } from "@/context/auth";
+import { UserProvider } from "@/context/user";
 import "@/styles/globals.css";
 import { ThemeProvider } from "next-themes";
 import { Poppins } from 'next/font/google'
@@ -13,24 +15,28 @@ const poppins = Poppins({
 export default function App({ Component, pageProps }) {
   return <>
     <ThemeProvider attribute='class'>
+      <UserProvider>
+        <AuthStateChangeProvicer>
 
-      <ThemeToggle />
+          <ThemeToggle />
 
-      <Toaster
-        toastOptions={{
-          style: {
-            background: "var(--container-color)",
-            color: "var(--text-color)",
-          },
-        }}
-        position="top-right"
-      />
+          <Toaster
+            toastOptions={{
+              style: {
+                background: "var(--container-color)",
+                color: "var(--text-color)",
+              },
+            }}
+            position="top-right"
+          />
 
-      <Sidebar />
-      <main className={`${poppins.className} group lg:ml-[80px]  ml-0`}>
-        <Overlay />
-        <Component {...pageProps} />
-      </main>
+          <Sidebar />
+          <main className={`${poppins.className} group lg:ml-[80px]  ml-0`}>
+            <Overlay />
+            <Component {...pageProps} />
+          </main>
+        </AuthStateChangeProvicer>
+      </UserProvider>
     </ThemeProvider>
   </>
 }
