@@ -1,37 +1,32 @@
 export const MENU_ITEMS = [
     {
         href: "/",
-        iconClass: "icon-home",
+        iconClass: "bx bx-home-alt",
         label: "Home",
     },
     {
         href: "/dashboard",
-        iconClass: "icon-grid",
+        iconClass: "bx bx-grid",
         label: "Dashboard",
     },
     {
-        href: "/about",
-        iconClass: "icon-user",
-        label: "About",
+        href: "/skill",
+        iconClass: "bx bx-code-alt",
+        label: "Skill",
     },
     {
-        href: "/resume",
-        iconClass: "icon-graduation",
+        href: "/certificate",
+        iconClass: "bx bx-award",
         label: "Resume",
     },
     {
-        href: "/services",
-        iconClass: "icon-briefcase",
-        label: "Services",
-    },
-    {
         href: "/portfolio",
-        iconClass: "icon-layers",
+        iconClass: "bx bx-layer",
         label: "Portofolio",
     },
     {
         href: "/blog",
-        iconClass: "icon-note",
+        iconClass: "bx bx-note",
         label: "Blogs",
     },
 ];
