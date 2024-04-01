@@ -61,7 +61,7 @@ html {
   }
 
   .dots {
-    @apply before:content-[''] before:absolute before:bg-dots before:h-9 before:w-9 before:-left-3 before:-top-1 before:-z-[1]
+    @apply before:content-[''] before:absolute before:bg-dots before:h-9 before:w-9 before:-left-3 before:-top-3 before:-z-[1]
   }
 
   .form-input {
