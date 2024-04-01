@@ -31,7 +31,6 @@
 body {
   color: var(--foreground-color);
   background: var(--background-color);
-  
 }
 html {
   scroll-behavior: smooth;
@@ -81,4 +80,9 @@ html {
     @apply flex gap-2 whitespace-nowrap items-center py-2 px-3 border border-stroke rounded-md bg-container text-text
   }
 
+}
+
+.code-highlight, .w-md-editor-area, .w-md-editor-preview {
+  scrollbar-color: var(--text-secondary) transparent;
+  scrollbar-width: thin;
 }
