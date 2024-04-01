@@ -36,12 +36,13 @@ function CreateBlog() {
     ];
 
     return (
-        <form className="" onSubmit={handleSubmit(onSubmit)}>
+        <div className="p-2 card">
+            <form className="" onSubmit={handleSubmit(onSubmit)}>
             {/* Register the hidden input with react-hook-form */}
             <div className="mb-3">
                 <label htmlFor="title">Title</label>
                 <input
-                    className="w-full bg-container  p-2 rounded-md border-stroke border"
+                    className="w-full bg-background  p-2 rounded-md border-stroke border"
                     type="text"
                     {...register("title")}
                 />
@@ -57,17 +58,15 @@ function CreateBlog() {
             <label>Preview</label>
             <MDEditorPreview
                 source={content}
-                style={{
-                    padding: "1.5rem",
-                    borderRadius: ".5rem",
-                    border: "1px solid var(--stroke-color)",
-                }}
+                className="p-3 md:p-4 rounded-lg border border-stroke"
+                
             />
 
-            <button className="btn !w-full mt-5" type="submit">
+            <button className="btn !w-full mt-5 mb-3" type="submit">
                 Save
             </button>
         </form>
+        </div>
     );
 }
 
