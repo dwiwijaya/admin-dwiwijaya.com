@@ -108,6 +108,9 @@ html {
 .w-md-editor-toolbar li > button{
   color: white !important;
 }
+.w-md-editor-text{
+  height: 100% !important;
+}
 .wmde-markdown{
   background-color: #ffffff !important;
   border-radius: 0 !important;
@@ -126,12 +129,12 @@ html {
 }
 
 .css-13cymwt-control, .css-t3ipsp-control, .css-1nmdiq5-{
-  background-color: rgb(249 250 251 / var(--tw-bg-opacity)) !important;
+  background-color: #f9fafb !important;
   border-color: #d3d7dc !important;
 }
-.dark .css-13cymwt-control, .css-t3ipsp-control, .css-1nmdiq5-{
+.dark .css-13cymwt-control, .dark .css-t3ipsp-control, .dark .css-1nmdiq5-{
   border-color: rgb(75 85 99) !important;
-  background-color: rgb(55 65 81 / var(--tw-bg-opacity)) !important;
+  background-color: #374151  !important;
 }
 .css-1p3m7a8-multiValue{
   background-color: var(--primary-bg) !important;
@@ -143,10 +146,21 @@ html {
   color: rgb(255, 102, 0) !important;
 }
 .css-3w2yfm-ValueContainer{
-  padding: 2px !important;
+  padding: 4px !important;
+  gap: .2rem;
 }
+
+.dark .css-1dimb5e-singleValue{
+  color: white;
+}
+.css-qbdosj-Input input{
+  box-shadow: none !important;
+}
+
+/* Modal */
 [data-testid="modal-overlay"]{
   backdrop-filter: blur(1px);
   -webkit-backdrop-filter: blur(1px);
   background: #000000ab;
+  transition: .3s ease-in;
 }
