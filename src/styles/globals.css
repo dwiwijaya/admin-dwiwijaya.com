@@ -145,3 +145,8 @@ html {
 .css-3w2yfm-ValueContainer{
   padding: 2px !important;
 }
+[data-testid="modal-overlay"]{
+  backdrop-filter: blur(1px);
+  -webkit-backdrop-filter: blur(1px);
+  background: #000000ab;
+}
