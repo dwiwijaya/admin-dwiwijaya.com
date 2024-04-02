@@ -68,9 +68,9 @@ html {
     @apply bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500
   }
 
-  /* .form-label {
-    @apply absolute -top-4 left-5 px-2 py-1 bg-background z-[2];
-  } */
+  .form-label {
+    @apply text-sm font-medium text-gray-900 dark:text-white;
+  }
 
   .form-control {
     @apply mb-4;
@@ -80,9 +80,68 @@ html {
     @apply flex gap-2 whitespace-nowrap items-center py-2 px-3 border border-stroke rounded-md bg-container text-text
   }
 
-}
+  /* Override class */
+  .css-13cymwt-control{
+    @apply !bg-gray-50 !dark:bg-gray-700
+  }
 
+}
+/* React Markdown Editor */
 .code-highlight, .w-md-editor-area, .w-md-editor-preview {
   scrollbar-color: var(--text-secondary) transparent;
   scrollbar-width: thin;
+}
+.w-md-editor-content{
+  background-color: #f9fafb;
+}
+.dark .w-md-editor-content{
+  background-color: rgb(55 65 81) !important;
+}
+.w-md-editor-toolbar{
+  background-color: rgb(31 41 55) !important;
+  color: white;
+}
+.dark .w-md-editor-toolbar{
+  background-color: #4b5563 !important;
+  color: white;
+}
+.w-md-editor-toolbar li > button{
+  color: white !important;
+}
+.wmde-markdown{
+  background-color: #ffffff !important;
+  border-radius: 0 !important;
+}
+.dark .wmde-markdown{
+  background-color: rgb(55 65 81) !important;
+}
+/* ============================ */
+
+/* React Select */
+.css-13cymwt-control, .css-t3ipsp-control{
+  padding: 2px !important;
+  border-radius: .5rem !important;
+  box-shadow: none !important;
+  border-color: #d3d7dc !important;
+}
+
+.css-13cymwt-control, .css-t3ipsp-control, .css-1nmdiq5-{
+  background-color: rgb(249 250 251 / var(--tw-bg-opacity)) !important;
+  border-color: #d3d7dc !important;
+}
+.dark .css-13cymwt-control, .css-t3ipsp-control, .css-1nmdiq5-{
+  border-color: rgb(75 85 99) !important;
+  background-color: rgb(55 65 81 / var(--tw-bg-opacity)) !important;
+}
+.css-1p3m7a8-multiValue{
+  background-color: var(--primary-bg) !important;
+  color: var(--primary-color) !important;
+  border-radius: .25rem !important;
+  border: 1px solid var(--primary-color);
+}
+.css-wsp0cs-MultiValueGeneric{
+  color: rgb(255, 102, 0) !important;
+}
+.css-3w2yfm-ValueContainer{
+  padding: 2px !important;
 }
