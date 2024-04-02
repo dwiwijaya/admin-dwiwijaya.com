@@ -10,6 +10,12 @@ const SignoutToggle = () => {
     const [openModal, setOpenModal] = useState(false);
     const user = useUser();
     const { uuid } = user;
+
+    const handleSignout = () => {
+        SignOut();
+        setOpenModal(false);
+    }
+    
     return uuid && (
         <>
             <button className='toggle right-[4.5rem]' onClick={() => setOpenModal(true)}>
@@ -25,7 +31,7 @@ const SignoutToggle = () => {
                             Are you sure you want to sign out?
                         </h3>
                         <div className="flex justify-center gap-4">
-                            <button className="btn" onClick={SignOut}>
+                            <button className="btn" onClick={handleSignout}>
                                 {"Yes, I'm sure"}
                             </button>
                             <Button color="gray" onClick={() => setOpenModal(false)}>
