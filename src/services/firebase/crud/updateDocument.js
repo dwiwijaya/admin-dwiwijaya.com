@@ -9,7 +9,8 @@ export async function updateDocument(collectionName, id, newData) {
 
     try {
         const docRef = doc(db, collectionName, id);
-        result = await setDoc(docRef, newData, { merge: true });
+        await setDoc(docRef, newData, { merge: true });
+        result = true
     } catch (e) {
         error = e;
     }

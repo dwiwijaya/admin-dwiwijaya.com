@@ -173,6 +173,6 @@ html {
 [data-testid="modal-overlay"]{
   backdrop-filter: blur(1px);
   -webkit-backdrop-filter: blur(1px);
-  background: #000000ab;
+  background: #00000062;
   transition: .3s ease-in;
 }

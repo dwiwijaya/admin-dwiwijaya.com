@@ -8,9 +8,10 @@ export default async function addDocument(colllection, id, data) {
     let error = null;
 
     try {
-        result = await setDoc(doc(db, colllection, id), data, {
+        await setDoc(doc(db, colllection, id), data, {
             merge: true,
         });
+        result = true;
     } catch (e) {
         error = e;
     }

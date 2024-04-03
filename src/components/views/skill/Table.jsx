@@ -1,10 +1,29 @@
-import React from "react";
+import React, { useState } from "react";
 import { fetcher } from "@/services/fetcher";
-import useSWR from "swr";
+import useSWR, { mutate } from "swr";
+import { deleteDocument } from "@/services/firebase/crud/deleteDocument";
+import { Button, Modal } from "flowbite-react";
+import { useRouter } from "next/router";
+import toast from "react-hot-toast";
+import Link from "next/link";
 
 const SkillTable = () => {
-    const {data} = useSWR('/api/skill', fetcher)
-    console.log(data);
+    const [openModal, setOpenModal] = useState(false);
+    const [deleteItemId, setDeleteItemId] = useState(null); // State to store the ID of the item to delete
+    const { data } = useSWR('/api/skill', fetcher);
+    const router = useRouter();
+console.log(data);
+    const handleDelete = async (id) => {
+        const { result, error } = await deleteDocument("skills", id); // Corrected to use the passed id
+        if (result) {
+            setOpenModal(false);
+            router.push("/skill")
+            mutate('/api/skill');
+            toast.success("Data deleted successfully");
+        }
+        console.log(result);
+    };
+
     return (
         <div className="overflow-x-auto bg-container">
             <div className="relative scrollbar-hide overflow-y-hidden shadow-md sm:rounded-lg card !p-2">
@@ -26,7 +45,7 @@ const SkillTable = () => {
                         </tr>
                     </thead>
                     <tbody>
-                        {data.map((item, index) => (
+                        {data && data.map((item, index) => (
                             <tr key={index} className="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
                                 <td className="flex gap-2 px-6 py-4 ">
                                     <i className="text-xl" dangerouslySetInnerHTML={{ __html: item.icon }} />
@@ -35,13 +54,16 @@ const SkillTable = () => {
                                 <td className="px-6 py-4">{item.type}</td>
                                 <td className="px-6 py-4">{item.order}</td>
                                 <td className="px-6 py-4 text-right flex gap-1 justify-end">
-                                    <a href="#" className="action-btn action-btn-primary">
+                                    <Link href={`/skill/${item.id}`} className="action-btn action-btn-primary">
                                         <i className="bx bx-search"></i>
-                                    </a>
-                                    <a href="#" className="action-btn action-btn-warning">
+                                    </Link>
+                                    <Link href={`/skill/update/${item.id}`} className="action-btn action-btn-warning">
                                         <i className="bx bx-edit"></i>
-                                    </a>
-                                    <a href="#" className="action-btn action-btn-danger">
+                                    </Link>
+                                    <a onClick={() => {
+                                        setDeleteItemId(item.id);
+                                        setOpenModal(true);
+                                    }} className="action-btn action-btn-danger">
                                         <i className="bx bx-trash"></i>
                                     </a>
                                 </td>
@@ -50,6 +72,27 @@ const SkillTable = () => {
                     </tbody>
                 </table>
             </div>
+
+            <Modal show={openModal} onClose={() => setOpenModal(false)} size='sm'>
+                <Modal.Body>
+                    <div className="text-center">
+                        <div className="mx-auto mb-4 h-10 w-10 text-slate-600 dark:text-gray-400 bg-gray-200 dark:bg-gray-600 rounded-md p-1 flex items-center justify-center text-xl" >
+                            <i className="icon-exclamation"></i>
+                        </div>
+                        <h3 className="mb-5 text-lg font-normal text-gray-500 dark:text-gray-400">
+                            Are you sure you want to delete this item?
+                        </h3>
+                        <div className="flex justify-center gap-4">
+                            <button className="btn" onClick={() => handleDelete(deleteItemId)}>
+                                {"Yes, I'm sure"}
+                            </button>
+                            <Button color="gray" onClick={() => setOpenModal(false)}>
+                                No, cancel
+                            </Button>
+                        </div>
+                    </div>
+                </Modal.Body>
+            </Modal>
         </div>
     );
 };

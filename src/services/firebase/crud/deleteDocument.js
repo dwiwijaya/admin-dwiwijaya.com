@@ -9,7 +9,8 @@ export async function deleteDocument(collectionName, id) {
 
     try {
         const docRef = doc(db, collectionName, id);
-        result = await deleteDoc(docRef);
+        await deleteDoc(docRef);
+        result = true;
     } catch (e) {
         error = e;
     }
