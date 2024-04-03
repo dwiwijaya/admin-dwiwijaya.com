@@ -17,9 +17,8 @@ const firebaseConfig = {
 };
 
 // Initialize Firebase
-if (!getApps().length) {
-  initializeApp(firebaseConfig);
-}
+let firebase_app = getApps().length === 0 ? initializeApp(firebaseConfig) : getApps()[0];
+
 
 export const FirebaseAuth = getAuth();
 
@@ -33,3 +32,5 @@ export const SignIn = async (email, password) => {
 export const SignOut = async () => {
   await signOut(FirebaseAuth);
 }
+
+export default firebase_app;

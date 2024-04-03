@@ -1,7 +1,7 @@
 // SignoutToggle.js
 
 import { useUser } from "@/context/user";
-import { SignOut } from "@/services/firebase";
+import { SignOut } from "@/services/firebase/config";
 import { Button, Modal } from "flowbite-react";
 import { useTheme } from "next-themes";
 import { useEffect, useState } from "react";

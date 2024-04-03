@@ -2,7 +2,7 @@ import Image from 'next/image';
 import loginImage from '@/assets/login.jpg'
 import { useForm } from 'react-hook-form';
 import ErrorInput from '../common/ErrorInput';
-import { SignIn } from '@/services/firebase';
+import { SignIn } from '@/services/firebase/config';
 import WithUnprotected from '@/hoc/withUnprotected';
 import toast from 'react-hot-toast';
 import { useState } from 'react';

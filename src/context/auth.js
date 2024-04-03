@@ -1,4 +1,4 @@
-import { Authentication } from '@/services/firebase'
+import { Authentication } from '@/services/firebase/config'
 import { useEffect, useState } from 'react'
 import { useUser, InitialUserState } from './user';
 
