@@ -55,6 +55,18 @@ html {
   .btn {
     @apply px-3 py-2 leading-4 justify-center rounded-md shadow-sm bg-[#ff985c4d] border border-[#ffa04666] text-primary flex gap-1 items-center font-normal text-sm w-fit hover:border-primary transition-3s
   }
+  .action-btn{
+    @apply p-2 flex items-center rounded-[5px] border text-lg transition-3s hover:text-white 
+  }
+  .action-btn-danger{
+    @apply  bg-opacity-50 bg-red-500 hover:bg-red-500 text-red-500  border-red-400 
+  }
+  .action-btn-warning{
+    @apply  bg-opacity-50 bg-amber-400 hover:bg-amber-400 text-amber-500  border-amber-400 
+  }
+  .action-btn-primary{
+    @apply  bg-opacity-50 bg-green-500 hover:bg-green-500 text-green-500  border-green-400 
+  }
 
   .hr {
     @apply border-stroke my-5;
