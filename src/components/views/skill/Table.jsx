@@ -1,9 +1,10 @@
 import React from "react";
-import { Table } from "flowbite-react";
-import getCollecction from "@/services/firebase/crud/getCollecction";
-import skill from "@/pages/skill";
+import { fetcher } from "@/services/fetcher";
+import useSWR from "swr";
 
-const SkillTable = ({ items }) => {
+const SkillTable = () => {
+    const {data} = useSWR('/api/skill', fetcher)
+    console.log(data);
     return (
         <div className="overflow-x-auto bg-container">
             <div className="relative scrollbar-hide overflow-y-hidden shadow-md sm:rounded-lg card !p-2">
@@ -25,7 +26,7 @@ const SkillTable = ({ items }) => {
                         </tr>
                     </thead>
                     <tbody>
-                        {items.result.map((item, index) => (
+                        {data.map((item, index) => (
                             <tr key={index} className="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
                                 <td className="flex gap-2 px-6 py-4 ">
                                     <i className="text-xl" dangerouslySetInnerHTML={{ __html: item.icon }} />
