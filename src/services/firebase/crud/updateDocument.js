@@ -6,7 +6,7 @@ const db = getFirestore(firebase_app)
 export async function updateDocument(collectionName, id, newData) {
     let result = [];
     let error = null;
-
+    newData.timestamp = Date.now();
     try {
         const docRef = doc(db, collectionName, id);
         await setDoc(docRef, newData, { merge: true });
