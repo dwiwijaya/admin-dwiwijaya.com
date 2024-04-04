@@ -77,7 +77,7 @@ const SkillTable = () => {
                                         href={`/skill/update/${item.id}`}
                                         className="action-btn action-btn-warning"
                                     >
-                                        <i className="bx bx-edit"></i>
+                                        <i className="bx bxs-pencil"></i>
                                     </Link>
                                     <a
                                         onClick={() => {
