@@ -10,7 +10,7 @@ const create = () => {
     <Container>
       <PageHeading title="Create Skill">
       </PageHeading>
-      <SkillForm/>
+      <SkillForm action="create"/>
     </Container>
   )
 }
