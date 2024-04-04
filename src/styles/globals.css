@@ -179,10 +179,13 @@ html {
 
 #nprogress .bar {
   background: var(--primary-color) !important;
-  height: 2px !important;
+  height: 3px !important;
   z-index: 9999999 !important;
 }
 
 #nprogress .bar {
   position: fixed !important;
+}
+#nprogress .peg {
+  box-shadow: none !important;
 }
