@@ -176,3 +176,13 @@ html {
   background: #00000062;
   transition: .3s ease-in;
 }
+
+#nprogress .bar {
+  background: #15b8a6 !important;
+  height: 2px !important;
+  z-index: 9999999 !important;
+}
+
+#nprogress .bar {
+  position: fixed !important;
+}

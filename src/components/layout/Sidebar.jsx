@@ -47,7 +47,7 @@ const Sidebar = () => {
 
     return uuid &&  (
         <>
-            <aside ref={sidebarRef} className={`${toggle && '!left-0'} fixed -left-[80px] lg:left-0 top-0 bg-container border-r border-stroke p-6 w-20 min-h-screen flex flex-col justify-between text-center transition-3s z-10`}>
+            <aside ref={sidebarRef} className={`${toggle && '!left-0'} fixed -left-[80px] lg:left-0 top-0 bg-container border-r border-stroke p-6 w-20 min-h-screen flex flex-col justify-between text-center transition-3s z-[9]`}>
                 <Link aria-label='go home' href="/" className="nav__logo">
                     <Image src={theme == 'dark' ? LogoDark : LogoLight} alt="Dwi-logo" />
                 </Link>
