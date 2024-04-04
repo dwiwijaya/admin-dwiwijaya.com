@@ -1,5 +1,5 @@
 import { useForm } from "react-hook-form";
-import { Label, TextInput } from "flowbite-react";
+import { Label, TextInput, Textarea } from "flowbite-react";
 import React, { useEffect, useState } from "react";
 import addDocument from "@/services/firebase/crud/addDocument";
 import { v4 as uuid } from 'uuid'
@@ -97,8 +97,9 @@ const SkillForm = ({ initialData, action }) => {
                     <div className="mb-2 block">
                         <Label htmlFor="icon" value="SVG Icon" />
                     </div>
-                    <TextInput
+                    <Textarea
                         id="icon"
+                        className="h-20 scrollbar-hide"
                         onChange={handleChange}
                         {...register("icon", { required: true })}
                     />
