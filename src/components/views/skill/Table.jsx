@@ -121,7 +121,7 @@ const SkillTable = () => {
                 <nav className="block">
                     <ul className="flex gap-1 pl-0 rounded list-none flex-wrap">
                         <li>
-                            <button disabled={currentPage - 1 == 0} className={`btn !bg-container ${currentPage - 1 == 0 ? '!text-subtext !border-stroke hover:border-stroke' : ''}`} onClick={() => handlePageChange(currentPage - 1)}>
+                            <button disabled={currentPage - 1 == 0} className={`btn !block !bg-container ${currentPage - 1 == 0 ? '!text-subtext !border-stroke hover:border-stroke' : ''}`} onClick={() => handlePageChange(currentPage - 1)}>
                                 <i className="bx bx-chevron-left"></i> </button>
                         </li>
                         {Array.from({ length: totalPages }, (_, index) => (
@@ -135,7 +135,7 @@ const SkillTable = () => {
                             </li>
                         ))}
                         <li>
-                            <button disabled={currentPage + 1 > totalPages} className={`btn !bg-container ${currentPage + 1 > totalPages ? '!text-subtext !border-stroke hover:border-stroke' : ''}`} onClick={() => handlePageChange(currentPage + 1)}>
+                            <button disabled={currentPage + 1 > totalPages} className={`btn !block !bg-container ${currentPage + 1 > totalPages ? '!text-subtext !border-stroke hover:border-stroke' : ''}`} onClick={() => handlePageChange(currentPage + 1)}>
                                 <i className="bx bx-chevron-right"></i>
                             </button>
                         </li>
