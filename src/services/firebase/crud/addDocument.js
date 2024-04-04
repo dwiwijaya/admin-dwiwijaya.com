@@ -4,7 +4,7 @@ import { getFirestore, doc, setDoc } from "firebase/firestore";
 const db = getFirestore(firebase_app)
 
 export default async function addDocument(colllection, id, data) {
-    let result = null;
+    let success = false;
     let error = null;
     data.timestamp = Date.now();
 
@@ -12,10 +12,10 @@ export default async function addDocument(colllection, id, data) {
         await setDoc(doc(db, colllection, id), data, {
             merge: true,
         });
-        result = true;
+        success = true;
     } catch (e) {
         error = e;
     }
 
-    return { result, error };
+    return { success, error };
 }
