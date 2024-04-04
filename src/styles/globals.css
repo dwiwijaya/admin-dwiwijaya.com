@@ -178,7 +178,7 @@ html {
 }
 
 #nprogress .bar {
-  background: #15b8a6 !important;
+  background: var(--primary-color) !important;
   height: 2px !important;
   z-index: 9999999 !important;
 }
