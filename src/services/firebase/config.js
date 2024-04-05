@@ -1,5 +1,6 @@
 // Import the functions you need from the SDKs you need
 import { initializeApp, getApps } from "firebase/app";
+import { getStorage } from 'firebase/storage'
 import {
   getAuth,
   signInWithEmailAndPassword,
@@ -31,5 +32,5 @@ export const SignIn = async (email, password) => {
 export const SignOut = async () => {
   await signOut(FirebaseAuth);
 }
-
+export const storage = getStorage(firebase_app,  process.env.NEXT_PUBLIC_FIREBASE_STORAGE_PATH)
 export default firebase_app;
