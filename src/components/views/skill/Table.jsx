@@ -2,22 +2,23 @@ import React, { useEffect, useState } from 'react';
 import { fetcher } from '@/services/fetcher';
 import useSWR, { mutate } from 'swr';
 import { deleteDocument } from '@/services/firebase/crud/deleteDocument';
-import { Button, Modal, Pagination } from 'flowbite-react';
-import { useRouter } from 'next/router';
+import { Pagination } from 'flowbite-react';
 import toast from 'react-hot-toast';
-import Link from 'next/link';
 import PopupModal from '@/components/elements/PopupModal';
 import ButtonActionColumn from '@/components/elements/ButtonActionColumn';
 
 const SkillTable = () => {
     const { data } = useSWR('/api/skill', fetcher);
-    const router = useRouter();
-    const pageSize = 10; // Number of items per page
-
+    
     const [openModal, setOpenModal] = useState(false);
     const [IsLoading, setIsLoading] = useState(false);
-    const [currentPage, setCurrentPage] = useState(1); // State to store current page
-    const [deleteItemId, setDeleteItemId] = useState(null); // State to store the ID of the item to delete
+    const [currentPage, setCurrentPage] = useState(1);
+    const [deleteItemId, setDeleteItemId] = useState(null);
+
+    const handleDeleteClick = (id, filepath) => {
+        setDeleteItemId(id);
+        setOpenModal(true);
+    }
 
     const handleDelete = async (id) => {
         try {
@@ -25,11 +26,9 @@ const SkillTable = () => {
             const { result, error } = await deleteDocument('skills', id);
             if (result) {
                 setOpenModal(false);
-                router.push('skill');
-                mutate('api/skill');
+                mutate('/api/skill');
                 toast.success('Data deleted successfully');
             }
-            console.log(result);
         }
         catch (e) {
             console.log('Err:', e.message);
@@ -39,10 +38,10 @@ const SkillTable = () => {
             setIsLoading(false)
         }
     };
-
-
+    
+    
+    const pageSize = 10; 
     const totalPages = Math.ceil(data?.length / pageSize);
-
     const handlePageChange = (page) => {
         setCurrentPage(page);
     };
@@ -88,7 +87,7 @@ const SkillTable = () => {
                                 <td className="px-6 py-4">{item.type}</td>
                                 <td className="px-6 py-4">{item.order}</td>
                                 <td className="px-6 py-4 text-right flex gap-1 justify-end">
-                                    <ButtonActionColumn route="skill" id={item.id} setDeleteItemId={setDeleteItemId} setOpenModal={setOpenModal} />                                       
+                                    <ButtonActionColumn route="skill" id={item.id} onDeleteClick={() => handleDeleteClick(item.id)} />                                       
                                 </td>
                             </tr>
                         ))}
