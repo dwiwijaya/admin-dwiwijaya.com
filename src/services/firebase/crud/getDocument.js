@@ -14,7 +14,7 @@ export default async function getDocument(collectionName, id) {
         } else {
             throw new Error("Document not found");
         }
-    } catch (error) {
+    } catch (e) {
         error = e;
     }
 
