@@ -71,6 +71,14 @@ const DetailPortfolio = ({ data }) => {
           </tr>
           <tr className='border-b border-stroke hover:bg-gray-50 dark:hover:bg-gray-600'>
             <th scope="col" className="px-6 py-4 whitespace-nowrap">
+              Excerpt
+            </th>
+            <td className="px-6 py-4">
+              {data.excerpt}
+            </td>
+          </tr>
+          <tr className='border-b border-stroke hover:bg-gray-50 dark:hover:bg-gray-600'>
+            <th scope="col" className="px-6 py-4 whitespace-nowrap">
               Category
             </th>
             <td className="px-6 py-4">
@@ -99,6 +107,18 @@ const DetailPortfolio = ({ data }) => {
             </th>
             <td className="px-6 py-4">
               {data.isFeatured.toString()}
+            </td>
+          </tr>
+          <tr className='border-b border-stroke hover:bg-gray-50 dark:hover:bg-gray-600'>
+            <th scope="col" className="px-6 py-4 whitespace-nowrap">
+              Skill
+            </th>
+            <td className="px-6 py-4">
+              <div className="flex gap-2">
+              {data.skill.map((skill,index) => (
+                <i key={index} className='badge'>{skill.label}</i>
+              ))}
+              </div>
             </td>
           </tr>
         </tbody>
