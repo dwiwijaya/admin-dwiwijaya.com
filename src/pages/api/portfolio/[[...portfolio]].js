@@ -1,11 +1,10 @@
 import getCollecction from "@/services/firebase/crud/getCollecction";
 import getDocument from "@/services/firebase/crud/getDocument";
 import { getFile } from "@/services/firebase/fileHandler";
-import { skipTrailingSlashRedirect } from "../../../../next.config";
 
 export default async function handler(req, res) {
     try {
-        console.log(req.query.portfolio[0]);
+
         if(Object.keys(req.query).length === 0) {
             const { result: data } = await getCollecction("portfolio");
 
@@ -28,7 +27,7 @@ export default async function handler(req, res) {
             }
             portfolioItem.thumbnail = await getFile(portfolioItem.thumbnail);
             res.status(200).json(portfolioItem);
-        } 
+        }
 
     } catch (error) {
         console.log(error);

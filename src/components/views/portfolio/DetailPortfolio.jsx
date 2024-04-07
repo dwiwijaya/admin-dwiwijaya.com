@@ -7,6 +7,7 @@ import Link from 'next/link'
 import React, { useState } from 'react'
 import "@uiw/react-md-editor/markdown-editor.css";
 import "@uiw/react-markdown-preview/markdown.css";
+import { deleteDocument } from '@/services/firebase/crud/deleteDocument';
 
 const MDEditorPreview = dynamic(
   () => import("@uiw/react-markdown-preview").then((module) => module.default),
@@ -18,11 +19,11 @@ const DetailPortfolio = ({ data }) => {
   const [IsLoading, setIsLoading] = useState(false);
   const [deleteItemId, setDeleteItemId] = useState(null);
   const handleDelete = async (id) => {
-    const { result, error } = await deleteDocument('certificates', id);
+    const { result, error } = await deleteDocument('portfolio', id);
     if (result) {
       setOpenModal(false);
-      router.push('/certificate');
-      mutate('/api/certificate');
+      router.push('/portfolio');
+      mutate('/api/portfolio');
       toast.success('Data deleted successfully');
     }
   };
@@ -89,7 +90,7 @@ const DetailPortfolio = ({ data }) => {
             <th scope="col" className="px-6 py-4 whitespace-nowrap">
               Demo Link
             </th>
-            <td className="px-6 py-4">
+            <td className="px-6 py-4 text-primary">
               <a href={data.demoLink}>{data.demoLink}</a>
             </td>
           </tr>
@@ -97,7 +98,7 @@ const DetailPortfolio = ({ data }) => {
             <th scope="col" className="px-6 py-4 whitespace-nowrap">
               Github Link
             </th>
-            <td className="px-6 py-4">
+            <td className="px-6 py-4 text-primary">
               <a href={data.githubLink}>{data.githubLink}</a>
             </td>
           </tr>
@@ -115,9 +116,13 @@ const DetailPortfolio = ({ data }) => {
             </th>
             <td className="px-6 py-4">
               <div className="flex gap-2">
-              {data.skill.map((skill,index) => (
-                <i key={index} className='badge'>{skill.label}</i>
-              ))}
+                {data.skill.map((skill, index) => (
+                  <div className="flex" key={index}> 
+                    <div className="badge">
+                    {skill.label}
+                    </div>
+                  </div>
+                ))}
               </div>
             </td>
           </tr>
@@ -129,7 +134,7 @@ const DetailPortfolio = ({ data }) => {
         className='mt-5'
         style={{ width: '100%', height: 'auto' }}
       />
-      <hr className='hr'/>
+      <hr className='hr' />
       <MDEditorPreview
         source={data.content}
         className="md:p-4 rounded-lg"
