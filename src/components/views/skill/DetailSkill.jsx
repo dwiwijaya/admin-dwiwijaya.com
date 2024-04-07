@@ -6,7 +6,7 @@ const DetailSkill = ({ id, name, icon, type, order }) => {
   const [openModal, setOpenModal] = useState(false);
   const [deleteItemId, setDeleteItemId] = useState(null); // State to store the ID of the item to delete
   const handleDelete = async (id) => {
-    const { result, error } = await deleteDocument('skills', id); // Corrected to use the passed id
+    const { result, error } = await deleteDocument('skill', id); // Corrected to use the passed id
     if (result) {
       setOpenModal(false);
       router.push('/skill');

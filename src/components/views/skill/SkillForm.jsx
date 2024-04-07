@@ -22,8 +22,8 @@ const SkillForm = ({ initialData, action }) => {
         try {
             setLoading(true);
             const { success, error } = action === 'create'
-                ? await addDocument("skills", data)
-                : await updateDocument("skills", initialData.id, data);
+                ? await addDocument("skill", data)
+                : await updateDocument("skill", initialData.id, data);
 
             const actionVerb = action === 'create' ? 'created' : 'updated';
             if (success) {

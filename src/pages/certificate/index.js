@@ -24,7 +24,7 @@ const index = ({fallback}) => {
 export default WithProtected(index);
 export const getServerSideProps = async () => {
 
-  const { result } = await getCollecction("certificates");
+  const { result } = await getCollecction("certificate");
 console.log(result);
   return {
     props: {

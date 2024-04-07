@@ -23,7 +23,7 @@ const SkillTable = () => {
     const handleDelete = async (id) => {
         try {
             setIsLoading(true)
-            const { result, error } = await deleteDocument('skills', id);
+            const { result, error } = await deleteDocument('skill', id);
             if (result) {
                 setOpenModal(false);
                 mutate('/api/skill');

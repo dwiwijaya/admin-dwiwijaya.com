@@ -45,8 +45,8 @@ const CertificateForm = ({ initialData, action }) => {
                 data.image = initialData.image;
             }
             const { success, error } = action === 'create'
-                ? await addDocument("certificates", data)
-                : await updateDocument("certificates", initialData.id, data);
+                ? await addDocument("certificate", data)
+                : await updateDocument("certificate", initialData.id, data);
 
             const actionVerb = action === 'create' ? 'created' : 'updated';
             if (success) {

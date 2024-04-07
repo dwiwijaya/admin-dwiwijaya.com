@@ -20,7 +20,7 @@ export default async function handler(req, res) {
             if (portfolioItem.skill && portfolioItem.skill.length > 0) {
                 const icons = await Promise.all(portfolioItem.skill.map(async (skillId) => {
                     console.log(skillId);
-                    const { result: skillData } = await getDocument("skills", skillId.value);
+                    const { result: skillData } = await getDocument("skill", skillId.value);
                     return {icon:skillData.icon, name:skillData.name};
                 }));
                 portfolioItem.skill = icons;

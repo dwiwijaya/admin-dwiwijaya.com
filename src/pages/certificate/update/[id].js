@@ -16,6 +16,6 @@ const update = ({data}) => {
 
 export default update
 export const getServerSideProps = async ({ params }) => {
-    const { result: data } = await getDocument("certificates", params?.id)
+    const { result: data } = await getDocument("certificate", params?.id)
     return { props: { data } }
 }

@@ -25,7 +25,7 @@ const index = ({fallback}) => {
 export default WithProtected(index);
 export const getServerSideProps = async () => {
 
-  const { result } = await getCollecction("skills");
+  const { result } = await getCollecction("skill");
 console.log(result);
   return {
     props: {

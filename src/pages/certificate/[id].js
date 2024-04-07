@@ -17,6 +17,6 @@ const view = ({ data }) => {
 
 export default view
 export const getServerSideProps = async ({ params }) => {
-  const {result:data} = await getDocument("certificates", params?.id, true, 'image')
+  const {result:data} = await getDocument("certificate", params?.id, true, 'image')
   return { props: { data } }
 }

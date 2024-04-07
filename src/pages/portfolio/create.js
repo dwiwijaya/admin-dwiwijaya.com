@@ -20,7 +20,7 @@ const create = ({skills}) => {
 export default WithProtected(create);
 export const getServerSideProps = async () => {
 
-  const { result: skills } = await getCollecction('skills');
+  const { result: skills } = await getCollecction('skill');
   return {
     props: {
       skills

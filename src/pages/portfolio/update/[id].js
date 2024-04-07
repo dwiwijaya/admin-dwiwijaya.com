@@ -18,6 +18,6 @@ const update = ({ data, skills }) => {
 export default update
 export const getServerSideProps = async ({ params }) => {
     const { result: data } = await getDocument("portfolio", params?.id)
-    const { result: skills } = await getCollecction('skills');
+    const { result: skills } = await getCollecction('skill');
     return { props: { data, skills } }
 }
