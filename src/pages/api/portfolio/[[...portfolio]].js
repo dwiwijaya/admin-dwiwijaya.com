@@ -9,7 +9,7 @@ export default async function handler(req, res) {
             const { result: data } = await getCollecction("portfolio");
 
             await Promise.all(data.map(async (doc) => {
-                doc.image = await getFile(doc.image);
+                doc.thumbnail = await getFile(doc.thumbnail);
             }));
 
             res.status(200).json(data);
