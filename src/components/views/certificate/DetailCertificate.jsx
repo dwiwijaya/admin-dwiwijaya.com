@@ -8,9 +8,11 @@ const DetailCertificate = ({ data }) => {
   const [IsLoading, setIsLoading] = useState(false);
   const [deleteItemId, setDeleteItemId] = useState(null);
   const handleDelete = async (id) => {
+    setIsLoading(true)
     const { result, error } = await deleteDocument('certificates', id);
     if (result) {
       setOpenModal(false);
+      setIsLoading(false)
       router.push('/certificate');
       mutate('/api/certificate');
       toast.success('Data deleted successfully');
@@ -81,7 +83,7 @@ const DetailCertificate = ({ data }) => {
         height={0}
         sizes="100vw"
         className='mt-5'
-        style={{ width: '100%', height: 'auto' }} 
+        style={{ width: '100%', height: 'auto' }}
       />
       <PopupModal msg="Are u sure to delete this item ?" openModal={openModal} setOpenModal={setOpenModal} handleConfirm={() => handleDelete(deleteItemId)} isLoading={IsLoading} />
     </div>

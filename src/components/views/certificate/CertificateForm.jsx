@@ -35,13 +35,13 @@ const CertificateForm = ({ initialData, action }) => {
         try {
             setLoading(true);
 
-            if ( (typeof data.image === 'string' && data.image.length > 0)) {
+            if ((typeof data.image === 'string' && data.image.length > 0)) {
             } else if (!initialData && data.image.length > 0) {
                 data.image = await uploadFile(data.image[0], 'certificates/',);
-            } else if(initialData.image && data.image.length > 0 ){
+            } else if (initialData.image && data.image.length > 0) {
                 await deleteFile(initialData.image);
                 data.image = await uploadFile(data.image[0], 'certificates/',);
-            } else if(initialData.image && data.image.length === 0){
+            } else if (initialData.image && data.image.length === 0) {
                 data.image = initialData.image;
             }
             const { success, error } = action === 'create'
@@ -102,10 +102,8 @@ const CertificateForm = ({ initialData, action }) => {
             </div>
             <div id="fileUpload" className=" mb-4">
                 <div className="mb-2 block">
-                    <Label htmlFor="file" value="Image" /> {initialData && (
-                        <>
-                            <small>{initialData.image}</small>
-                        </>)}
+                    <Label className="mr-2" htmlFor="file" value="Image" />
+                    {initialData && (<><small>{initialData.image}</small></>)}
                 </div>
                 <FileInput
                     accept=".png,.jpg,.webp,.jpeg"
