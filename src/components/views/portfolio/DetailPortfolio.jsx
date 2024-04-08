@@ -131,7 +131,7 @@ const DetailPortfolio = ({ data }) => {
       <Image alt={data.name} src={data.thumbnail} width={0}
         height={0}
         sizes="100vw"
-        className='mt-5'
+        className='mt-5 rounded-md'
         style={{ width: '100%', height: 'auto' }}
       />
       <hr className='hr' />
