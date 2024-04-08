@@ -96,10 +96,30 @@ const ExperienceForm = ({ initialData, action }) => {
                             />
                             {errors.degree && <span className="text-sm">This field is required</span>}
                         </div>
+                        <div className="mb-6">
+                            <div className="mb-2 block">
+                                <Label htmlFor="major" value="Major Name" />
+                            </div>
+                            <TextInput
+                                onChange={handleChange}
+                                {...register("major", { required: true })}
+                            />
+                            {errors.major && <span className="text-sm">This field is required</span>}
+                        </div>
                     </>
                 }
                 {selectedType == 'work' &&
                     <>
+                        <div className="mb-6">
+                            <div className="mb-2 block">
+                                <Label htmlFor="position" value="Position Name" />
+                            </div>
+                            <TextInput
+                                onChange={handleChange}
+                                {...register("position", { required: true })}
+                            />
+                            {errors.position && <span className="text-sm">This field is required</span>}
+                        </div>
                         <div className="mb-6">
                             <div className="mb-2 block">
                                 <Label htmlFor="workType" value="Work Type" />
@@ -141,7 +161,7 @@ const ExperienceForm = ({ initialData, action }) => {
                         <div className="mb-2 block">
                             <Label htmlFor="startMonth" value="Start Month" /> <small>(eg: Jan 2020)</small>
                         </div>
-                        <TextInput 
+                        <TextInput
                             onChange={handleChange}
                             {...register("startMonth", { required: true })}
                         />

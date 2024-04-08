@@ -95,17 +95,35 @@ const DetailLocation = ({ data }) => {
             </td>
           </tr>
           {data.type == 'education' &&
-          <tr className='border-b border-stroke hover:bg-gray-50 dark:hover:bg-gray-600'>
-          <th scope="col" className="px-6 py-4 whitespace-nowrap">
-            Education Degree
-          </th>
-          <td className="px-6 py-4 whitespace-normal">
-            {data.degree}
-          </td>
-        </tr>
+            <>
+              <tr className='border-b border-stroke hover:bg-gray-50 dark:hover:bg-gray-600'>
+                <th scope="col" className="px-6 py-4 whitespace-nowrap">
+                  Education major
+                </th>
+                <td className="px-6 py-4 whitespace-normal">
+                  {data.major}
+                </td>
+              </tr>
+              <tr className='border-b border-stroke hover:bg-gray-50 dark:hover:bg-gray-600'>
+                <th scope="col" className="px-6 py-4 whitespace-nowrap">
+                  Education Degree
+                </th>
+                <td className="px-6 py-4 whitespace-normal">
+                  {data.degree}
+                </td>
+              </tr>
+            </>
           }
           {data.type == 'work' &&
             <>
+              <tr className='border-b border-stroke hover:bg-gray-50 dark:hover:bg-gray-600'>
+                <th scope="col" className="px-6 py-4 whitespace-nowrap">
+                  Work Position
+                </th>
+                <td className="px-6 py-4 whitespace-normal">
+                  {data.position ?? 'present'}
+                </td>
+              </tr>
               <tr className='border-b border-stroke hover:bg-gray-50 dark:hover:bg-gray-600'>
                 <th scope="col" className="px-6 py-4 whitespace-nowrap">
                   Work Type
