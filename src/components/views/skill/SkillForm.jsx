@@ -15,8 +15,10 @@ const SkillForm = ({ initialData, action }) => {
 
     const handleChange = (e) => {
         const { name, value } = e.target;
+        console.log(e);
         setFormData({ ...formData, [name]: value });
     };
+
 
     const onSubmit = async (data) => {
         try {
