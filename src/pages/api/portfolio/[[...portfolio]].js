@@ -5,7 +5,7 @@ import { getFile } from "@/services/firebase/fileHandler";
 export default async function handler(req, res) {
     try {
 
-        if(Object.keys(req.query).length === 0) {
+        if (Object.keys(req.query).length === 0) {
             const { result: data } = await getCollecction("portfolio");
 
             await Promise.all(data.map(async (doc) => {
@@ -14,14 +14,13 @@ export default async function handler(req, res) {
 
             res.status(200).json(data);
         } else if (req.query.portfolio[0]) {
-            const { result: portfolioItem } = await getDocument("portfolio", req.query.portfolio[0]);
+            const { result: portfolioItem } = await getDocument("portfolio", req.query.portfolio[0], true, 'thumbnail', true);
 
             // Fetch icons for each skill
             if (portfolioItem.skill && portfolioItem.skill.length > 0) {
                 const icons = await Promise.all(portfolioItem.skill.map(async (skillId) => {
-                    console.log(skillId);
                     const { result: skillData } = await getDocument("skill", skillId.value);
-                    return {icon:skillData.icon, name:skillData.name};
+                    return { icon: skillData.icon, name: skillData.name };
                 }));
                 portfolioItem.skill = icons;
             }

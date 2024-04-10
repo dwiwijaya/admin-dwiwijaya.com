@@ -14,6 +14,7 @@ import Button from "@/components/common/Button";
 import ReactSelect from "react-select";
 import { init } from "aos";
 import { PORTFOLIO_CATEGORIES, PORTFOLIO_TYPES } from "@/constants/data/portfolio";
+import convert from "url-slug";
 
 // Import MDEditor component correctly
 const MDEditor = dynamic(
@@ -44,7 +45,7 @@ const PortfolioForm = ({ initialData, action, skills }) => {
             setLoading(true);
             data.skill = selected
             data.content = content
-            console.log(data);
+            data.slug = convert(data.name)
             // update or insert image 
             if ((typeof data.thumbnail === 'string' && data.thumbnail.length > 0)) {
             } else if (!initialData && data.thumbnail.length > 0) {
