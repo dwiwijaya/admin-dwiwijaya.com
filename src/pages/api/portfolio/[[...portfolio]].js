@@ -1,13 +1,21 @@
+import firebase_app from "@/services/firebase/config";
 import getCollecction from "@/services/firebase/crud/getCollecction";
 import getDocument from "@/services/firebase/crud/getDocument";
 import { getFile } from "@/services/firebase/fileHandler";
+import { collection, getDocs,  getFirestore, orderBy, query } from "firebase/firestore";
+
+const db = getFirestore(firebase_app)
 
 export default async function handler(req, res) {
     try {
 
         if (Object.keys(req.query).length === 0) {
-            const { result: data } = await getCollecction("portfolio");
-
+            let data = []
+            const q = query(collection(db, 'portfolio'), orderBy('isFeatured', 'desc'),orderBy('order' , 'asc') ); // Mengurutkan data berdasarkan timestamp secara menurun
+            const querySnapshot = await getDocs(q);
+            querySnapshot.forEach((doc) => {
+                data.push({ ...doc.data(), id: doc.id });
+            });
             await Promise.all(data.map(async (doc) => {
                 doc.thumbnail = await getFile(doc.thumbnail);
             }));

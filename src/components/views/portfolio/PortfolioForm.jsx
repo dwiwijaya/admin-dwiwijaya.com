@@ -118,6 +118,18 @@ const PortfolioForm = ({ initialData, action, skills }) => {
                 {errors.thumbnail && <span className="text-sm">This field is required</span>}
 
             </div>
+            <div id="fileUpload" className="w-full mb-4">
+                <div className="mb-2 block">
+                    <Label htmlFor="order" value="Order" />
+                </div>
+                <TextInput
+                    onChange={handleChange}
+                    {...register("order", { required: true })}
+                    id="order"
+                />
+                {errors.order && <span className="text-sm">This field is required</span>}
+
+            </div>
             <div className="mb-4">
                 <div className="mb-2">
                     <label className="form-label" htmlFor="category">Category</label>
