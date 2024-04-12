@@ -148,7 +148,7 @@ const PortfolioForm = ({ initialData, action, skills }) => {
                 </div>
                 <TextInput
                     onChange={handleChange}
-                    {...register("githubLink", { required: true })}
+                    {...register("githubLink", { required: false })}
                     id="githubLink"
                 />
                 {errors.githubLink && <span className="text-sm">This field is required</span>}
@@ -160,7 +160,7 @@ const PortfolioForm = ({ initialData, action, skills }) => {
                 </div>
                 <TextInput
                     onChange={handleChange}
-                    {...register("demoLink", { required: true })}
+                    {...register("demoLink", { required: false })}
                     id="demoLink"
                 />
                 {errors.demoLink && <span className="text-sm">This field is required</span>}
