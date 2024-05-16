@@ -2,15 +2,15 @@ import { Modal, Table } from 'flowbite-react'
 import Link from 'next/link'
 import React, { useState } from 'react'
 
-const DetailSkill = ({ id, name, icon, type, order }) => {
+const DetailAbout = ({ data }) => {
   const [openModal, setOpenModal] = useState(false);
   const [deleteItemId, setDeleteItemId] = useState(null); // State to store the ID of the item to delete
   const handleDelete = async (id) => {
-    const { result, error } = await deleteDocument('skill', id); // Corrected to use the passed id
+    const { result, error } = await deleteDocument('about', data.id); // Corrected to use the passed id
     if (result) {
       setOpenModal(false);
-      router.push('/skill');
-      mutate('/api/skill');
+      router.push('/about');
+      mutate('/api/about');
       toast.success('Data deleted successfully');
     }
     console.log(result);
@@ -22,7 +22,7 @@ const DetailSkill = ({ id, name, icon, type, order }) => {
         <Link
           href="#"
           onClick={() => {
-            setDeleteItemId(id);
+            setDeleteItemId(data.id);
             setOpenModal(true);
           }}
           className="btn action-btn-danger hover:text-white"
@@ -30,7 +30,7 @@ const DetailSkill = ({ id, name, icon, type, order }) => {
           <i className="bx bx-trash"></i> Delete
         </Link>
         <Link
-          href={`/skill/update/${id}`}
+          href={`/about/update/${data.id}`}
           className="btn action-btn-warning hover:text-white"
         >
           <i className="bx bxs-pencil"></i> Update
@@ -43,38 +43,55 @@ const DetailSkill = ({ id, name, icon, type, order }) => {
               ID
             </th>
             <td className="px-6 py-4">
-              {id}
+              {data.id}
             </td>
           </tr>
           <tr className='border-b border-stroke hover:bg-gray-50 dark:hover:bg-gray-600'>
             <th scope="col" className="px-6 py-4 whitespace-nowrap">
-              Name
+              Description
             </th>
             <td className="px-6 py-4 flex gap-1 items-center ">
-              <i
-                className="text-xl"
-                dangerouslySetInnerHTML={{ __html: icon }}
-              /> {name}
+              {data.description}
             </td>
           </tr>
           <tr className='border-b border-stroke hover:bg-gray-50 dark:hover:bg-gray-600'>
             <th scope="col" className="px-6 py-4 whitespace-nowrap">
-              Type
+              Experience
             </th>
             <td className="px-6 py-4">
-              {type}
+              {data.experience}
             </td>
           </tr>
           <tr className='border-b border-stroke hover:bg-gray-50 dark:hover:bg-gray-600'>
             <th scope="col" className="px-6 py-4 whitespace-nowrap">
-              Order
+              Project Complete
             </th>
             <td className="px-6 py-4">
-              {order}
+              {data.projectComplete}
+            </td>
+          </tr>
+          <tr className='border-b border-stroke hover:bg-gray-50 dark:hover:bg-gray-600'>
+            <th scope="col" className="px-6 py-4 whitespace-nowrap">
+              Resume
+            </th>
+            <td className="px-6 py-4 whitespace-normal">
+              <a className='text-primary' href={data.resume} target='_blank'>{data.resume}</a>
             </td>
           </tr>
         </tbody>
       </table>
+      <hr className='hr ' />
+      <iframe
+        src={data.resume}
+        title='Google Docs Viewer'
+        width={'100%'}
+        height={'800px'}
+        frameBorder='0'
+        scrolling='no'
+      >
+        This browser does not support embedding Google Docs. Please use a
+        compatible browser.
+      </iframe>
       <Modal show={openModal} onClose={() => setOpenModal(false)} size="sm">
         <Modal.Body>
           <div className="text-center">
@@ -99,4 +116,4 @@ const DetailSkill = ({ id, name, icon, type, order }) => {
   )
 }
 
-export default DetailSkill
+export default DetailAbout

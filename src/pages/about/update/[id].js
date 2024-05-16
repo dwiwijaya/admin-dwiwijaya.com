@@ -1,21 +1,21 @@
 import PageHeading from '@/components/common/PageHeading'
 import Container from '@/components/layout/Container'
-import SkillForm from '@/components/views/skill/SkillForm'
+import AboutForm from '@/components/views/about/AboutForm'
 import getDocument from '@/services/firebase/crud/getDocument'
 import React from 'react'
 
 const update = ({data}) => {
     return (
         <Container>
-            <PageHeading title="View Skill">
+            <PageHeading title="View About">
             </PageHeading>
-            <SkillForm action="update" initialData={data}/>
+            <AboutForm action="update" initialData={data}/>
         </Container>
     )
 }
 
 export default update
 export const getServerSideProps = async ({ params }) => {
-    const { result: data } = await getDocument("skill", params?.id)
+    const { result: data } = await getDocument("about", params?.id)
     return { props: { data } }
 }

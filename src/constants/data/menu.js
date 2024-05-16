@@ -5,9 +5,9 @@ export const MENU_ITEMS = [
         label: "Home",
     },
     {
-        href: "/dashboard",
-        iconClass: "bx bx-grid",
-        label: "Dashboard",
+        href: "/about",
+        iconClass: "bx bx-user",
+        label: "About",
     },
     {
         href: "/skill",
@@ -18,6 +18,11 @@ export const MENU_ITEMS = [
         href: "/certificate",
         iconClass: "bx bx-award",
         label: "Resume",
+    },
+    {
+        href: "/experience",
+        iconClass: "bx bxs-graduation",
+        label: "About",
     },
     {
         href: "/portfolio",

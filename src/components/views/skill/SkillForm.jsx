@@ -2,7 +2,6 @@ import { useForm } from "react-hook-form";
 import { Label, Select, TextInput, Textarea } from "flowbite-react";
 import React, { useEffect, useState } from "react";
 import addDocument from "@/services/firebase/crud/addDocument";
-import { v4 as uuid } from 'uuid'
 import toast from "react-hot-toast";
 import { useRouter } from "next/router";
 import { updateDocument } from "@/services/firebase/crud/updateDocument";
@@ -16,15 +15,17 @@ const SkillForm = ({ initialData, action }) => {
 
     const handleChange = (e) => {
         const { name, value } = e.target;
+        console.log(e);
         setFormData({ ...formData, [name]: value });
     };
+
 
     const onSubmit = async (data) => {
         try {
             setLoading(true);
             const { success, error } = action === 'create'
-                ? await addDocument("skills", uuid(), data)
-                : await updateDocument("skills", initialData.id, data);
+                ? await addDocument("skill", data)
+                : await updateDocument("skill", initialData.id, data);
 
             const actionVerb = action === 'create' ? 'created' : 'updated';
             if (success) {

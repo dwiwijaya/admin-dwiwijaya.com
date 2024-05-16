@@ -1,38 +1,37 @@
-import { Modal, Table } from 'flowbite-react'
+import PopupModal from '@/components/elements/PopupModal';
+import Image from 'next/image';
 import Link from 'next/link'
 import React, { useState } from 'react'
 
-const DetailSkill = ({ id, name, icon, type, order }) => {
+const DetailCertificate = ({ data }) => {
   const [openModal, setOpenModal] = useState(false);
-  const [deleteItemId, setDeleteItemId] = useState(null); // State to store the ID of the item to delete
+  const [IsLoading, setIsLoading] = useState(false);
+  const [deleteItemId, setDeleteItemId] = useState(null);
   const handleDelete = async (id) => {
-    const { result, error } = await deleteDocument('skill', id); // Corrected to use the passed id
+    setIsLoading(true)
+    const { result, error } = await deleteDocument('certificates', id);
     if (result) {
       setOpenModal(false);
-      router.push('/skill');
-      mutate('/api/skill');
+      setIsLoading(false)
+      router.push('/certificate');
+      mutate('/api/certificate');
       toast.success('Data deleted successfully');
     }
-    console.log(result);
   };
-
+  console.log(data);
   return (
     <div className='card'>
       <div className="flex justify-end gap-2">
-        <Link
-          href="#"
+        <Link href="#"
           onClick={() => {
-            setDeleteItemId(id);
+            setDeleteItemId(data.id);
             setOpenModal(true);
           }}
           className="btn action-btn-danger hover:text-white"
         >
           <i className="bx bx-trash"></i> Delete
         </Link>
-        <Link
-          href={`/skill/update/${id}`}
-          className="btn action-btn-warning hover:text-white"
-        >
+        <Link href={`/certificate/update/${data.id}`} className="btn action-btn-warning hover:text-white" >
           <i className="bx bxs-pencil"></i> Update
         </Link>
       </div>
@@ -43,7 +42,7 @@ const DetailSkill = ({ id, name, icon, type, order }) => {
               ID
             </th>
             <td className="px-6 py-4">
-              {id}
+              {data.id}
             </td>
           </tr>
           <tr className='border-b border-stroke hover:bg-gray-50 dark:hover:bg-gray-600'>
@@ -51,18 +50,15 @@ const DetailSkill = ({ id, name, icon, type, order }) => {
               Name
             </th>
             <td className="px-6 py-4 flex gap-1 items-center ">
-              <i
-                className="text-xl"
-                dangerouslySetInnerHTML={{ __html: icon }}
-              /> {name}
+              {data.name}
             </td>
           </tr>
           <tr className='border-b border-stroke hover:bg-gray-50 dark:hover:bg-gray-600'>
             <th scope="col" className="px-6 py-4 whitespace-nowrap">
-              Type
+              Organization
             </th>
             <td className="px-6 py-4">
-              {type}
+              {data.organization}
             </td>
           </tr>
           <tr className='border-b border-stroke hover:bg-gray-50 dark:hover:bg-gray-600'>
@@ -70,33 +66,28 @@ const DetailSkill = ({ id, name, icon, type, order }) => {
               Order
             </th>
             <td className="px-6 py-4">
-              {order}
+              {data.order}
+            </td>
+          </tr>
+          <tr className='border-b border-stroke hover:bg-gray-50 dark:hover:bg-gray-600'>
+            <th scope="col" className="px-6 py-4 whitespace-nowrap">
+              Credential
+            </th>
+            <td className="px-6 py-4">
+              <a href={data.credential}>{data.credential}</a>
             </td>
           </tr>
         </tbody>
       </table>
-      <Modal show={openModal} onClose={() => setOpenModal(false)} size="sm">
-        <Modal.Body>
-          <div className="text-center">
-            <div className="mx-auto mb-4 h-10 w-10 text-slate-600 dark:text-gray-400 bg-gray-200 dark:bg-gray-600 rounded-md p-1 flex items-center justify-center text-xl">
-              <i className="icon-exclamation"></i>
-            </div>
-            <h3 className="mb-5 text-lg font-normal text-gray-500 dark:text-gray-400">
-              Are you sure you want to delete this item?
-            </h3>
-            <div className="flex justify-center gap-4">
-              <button className="btn" onClick={() => handleDelete(deleteItemId)}>
-                Yes, I'm sure
-              </button>
-              <button color="gray" onClick={() => setOpenModal(false)}>
-                No, cancel
-              </button>
-            </div>
-          </div>
-        </Modal.Body>
-      </Modal>
+      <Image alt={data.name} src={data.image} width={0}
+        height={0}
+        sizes="100vw"
+        className='mt-5'
+        style={{ width: '100%', height: 'auto' }}
+      />
+      <PopupModal msg="Are u sure to delete this item ?" openModal={openModal} setOpenModal={setOpenModal} handleConfirm={() => handleDelete(deleteItemId)} isLoading={IsLoading} />
     </div>
   )
 }
 
-export default DetailSkill
+export default DetailCertificate

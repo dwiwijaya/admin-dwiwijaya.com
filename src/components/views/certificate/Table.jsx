@@ -2,45 +2,48 @@ import React, { useEffect, useState } from 'react';
 import { fetcher } from '@/services/fetcher';
 import useSWR, { mutate } from 'swr';
 import { deleteDocument } from '@/services/firebase/crud/deleteDocument';
-import { Pagination } from 'flowbite-react';
+import { Button, Modal, Pagination } from 'flowbite-react';
 import toast from 'react-hot-toast';
+import Link from 'next/link';
 import PopupModal from '@/components/elements/PopupModal';
 import ButtonActionColumn from '@/components/elements/ButtonActionColumn';
+import { deleteFile } from '@/services/firebase/fileHandler';
 
-const SkillTable = () => {
-    const { data } = useSWR('/api/skill', fetcher);
-    
+const certificateTable = () => {
+    const { data } = useSWR('/api/certificate', fetcher);
+
     const [openModal, setOpenModal] = useState(false);
     const [IsLoading, setIsLoading] = useState(false);
-    const [currentPage, setCurrentPage] = useState(1);
-    const [deleteItemId, setDeleteItemId] = useState(null);
-
+    const [currentPage, setCurrentPage] = useState(1); 
+    const [deleteItemId, setDeleteItemId] = useState(null); 
+    const [Filepath, setFilepath] = useState(null); 
+    
     const handleDeleteClick = (id, filepath) => {
         setDeleteItemId(id);
+        setFilepath(filepath);
         setOpenModal(true);
     }
-
     const handleDelete = async (id) => {
         try {
             setIsLoading(true)
-            const { result, error } = await deleteDocument('skill', id);
+            const deleteImage = await deleteFile(Filepath);
+            const { result } = await deleteDocument('certificates', id,);
             if (result) {
                 setOpenModal(false);
-                mutate('/api/skill');
+                mutate('/api/certificate');
                 toast.success('Data deleted successfully');
             }
         }
         catch (e) {
+            setIsLoading(false)
             console.log('Err:', e.message);
             toast.error('Data delete failed');
-            setIsLoading(false)
         } finally {
             setIsLoading(false)
         }
     };
     
-    
-    const pageSize = 10; 
+    const pageSize = 10;
     const totalPages = Math.ceil(data?.length / pageSize);
     const handlePageChange = (page) => {
         setCurrentPage(page);
@@ -72,22 +75,15 @@ const SkillTable = () => {
                     </thead>
                     <tbody>
                         {visibleData.map((item, index) => (
-                            <tr
-                                key={index}
-                                className="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600"
-                            >
+                            <tr key={index} className="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600" >
                                 <td className='px-6 py-4 m'>{order++}</td>
                                 <td className="flex gap-2 px-6 py-4 ">
-                                    <i
-                                        className="text-xl"
-                                        dangerouslySetInnerHTML={{ __html: item.icon }}
-                                    />
                                     {item.name}
                                 </td>
                                 <td className="px-6 py-4">{item.type}</td>
-                                <td className="px-6 py-4">{item.order}</td>
+                                <td className="px-6 py-4">{item.organization}</td>
                                 <td className="px-6 py-4 text-right flex gap-1 justify-end">
-                                    <ButtonActionColumn route="skill" id={item.id} onDeleteClick={() => handleDeleteClick(item.id)} />                                       
+                                    <ButtonActionColumn route="certificate" id={item.id} file={item.image} onDeleteClick={() => handleDeleteClick(item.id, item.image)} />
                                 </td>
                             </tr>
                         ))}
@@ -97,10 +93,10 @@ const SkillTable = () => {
 
             <PopupModal msg="Are u sure to delete this item ?" openModal={openModal} setOpenModal={setOpenModal} handleConfirm={() => handleDelete(deleteItemId)} isLoading={IsLoading} />
 
-            <Pagination className='mt-3 mb-5 float-right'  currentPage={currentPage} totalPages={totalPages} onPageChange={handlePageChange} showIcons />
+            <Pagination className='mt-3 mb-5 float-right' currentPage={currentPage} totalPages={totalPages} onPageChange={handlePageChange} showIcons />
 
         </div>
     );
 };
 
-export default SkillTable;
+export default certificateTable;

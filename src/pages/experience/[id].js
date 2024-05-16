@@ -1,6 +1,6 @@
 import PageHeading from '@/components/common/PageHeading'
 import Container from '@/components/layout/Container'
-import DetailSkill from '@/components/views/skill/DetailSkill'
+import DetailExperience from '@/components/views/experience/DetailExperience'
 import getDocument from '@/services/firebase/crud/getDocument'
 import { getDoc } from 'firebase/firestore'
 import React from 'react'
@@ -8,15 +8,15 @@ import React from 'react'
 const view = ({ data }) => {
   return (
     <Container>
-      <PageHeading title="View Skill">
+      <PageHeading title="View Experience">
       </PageHeading>
-      <DetailSkill {...data} />
+      <DetailExperience data={data} />
     </Container>
   )
 }
 
 export default view
 export const getServerSideProps = async ({ params }) => {
-  const {result:data} = await getDocument("skill", params?.id)
+  const {result:data} = await getDocument("experience", params?.id)
   return { props: { data } }
 }

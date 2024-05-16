@@ -11,7 +11,7 @@ const create = () => {
   return (
     <Container>
       <PageHeading title="Create Certificate" />
-      <CertificateForm />
+      <CertificateForm action="create"/>
     </Container>
   );
 };

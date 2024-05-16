@@ -7,8 +7,8 @@ import toast from 'react-hot-toast';
 import PopupModal from '@/components/elements/PopupModal';
 import ButtonActionColumn from '@/components/elements/ButtonActionColumn';
 
-const SkillTable = () => {
-    const { data } = useSWR('/api/skill', fetcher);
+const ExperienceTable = () => {
+    const { data } = useSWR('/api/experience', fetcher);
     
     const [openModal, setOpenModal] = useState(false);
     const [IsLoading, setIsLoading] = useState(false);
@@ -23,10 +23,10 @@ const SkillTable = () => {
     const handleDelete = async (id) => {
         try {
             setIsLoading(true)
-            const { result, error } = await deleteDocument('skill', id);
+            const { result, error } = await deleteDocument('experience', id);
             if (result) {
                 setOpenModal(false);
-                mutate('/api/skill');
+                mutate('/api/experience');
                 toast.success('Data deleted successfully');
             }
         }
@@ -63,7 +63,7 @@ const SkillTable = () => {
                                 Type
                             </th>
                             <th scope="col" className="px-6 py-3">
-                                Order
+                                Location
                             </th>
                             <th scope="col" className="px-6 py-3">
                                 <span className="sr-only">Edit</span>
@@ -77,17 +77,13 @@ const SkillTable = () => {
                                 className="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600"
                             >
                                 <td className='px-6 py-4 m'>{order++}</td>
-                                <td className="flex gap-2 px-6 py-4 ">
-                                    <i
-                                        className="text-xl"
-                                        dangerouslySetInnerHTML={{ __html: item.icon }}
-                                    />
-                                    {item.name}
+                                <td className="flex gap-2 px-6 py-4 whitespace-nowrap">
+                                    {item.institution}
                                 </td>
                                 <td className="px-6 py-4">{item.type}</td>
-                                <td className="px-6 py-4">{item.order}</td>
+                                <td className="px-6 py-4">{item.location}</td>
                                 <td className="px-6 py-4 text-right flex gap-1 justify-end">
-                                    <ButtonActionColumn route="skill" id={item.id} onDeleteClick={() => handleDeleteClick(item.id)} />                                       
+                                    <ButtonActionColumn route="experience" id={item.id} onDeleteClick={() => handleDeleteClick(item.id)} />                                       
                                 </td>
                             </tr>
                         ))}
@@ -103,4 +99,4 @@ const SkillTable = () => {
     );
 };
 
-export default SkillTable;
+export default ExperienceTable;
