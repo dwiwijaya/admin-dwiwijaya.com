@@ -1,5 +1,3 @@
-import Overlay from "@/components/layout/Overlay";
-import Sidebar from "@/components/layout/Sidebar";
 import { AuthStateChangeProvicer } from "@/context/auth";
 import { UserProvider } from "@/context/user";
 import "@/styles/globals.css";
@@ -11,6 +9,7 @@ import { Toaster } from "react-hot-toast";
 import { getLastCommitDate } from "@/services/GithubServices";
 import { Button, Modal } from "flowbite-react";
 import { useState } from "react";
+import Layout from "@/components/layout/Layout";
 
 const onest = Onest({
   weight: ['100', '200', '300', '400', '500', '600', '700', '800', '900'],
@@ -38,12 +37,11 @@ export default function App({ Component, pageProps, lastCommitDate }) {
             position="top-right"
           />
 
-          <Sidebar lastUpdate={lastCommitDate} />
-
-          <main className={`${onest.className} group/main lg:ml-64  ml-0 min-h-[100vh]`}>
-            <Overlay />
+          <Layout lastUpdate={lastCommitDate}>
+            <ProgressBar />
             <Component {...pageProps} />
-          </main>
+          </Layout>
+
         </AuthStateChangeProvicer>
       </UserProvider>
     </ThemeProvider>

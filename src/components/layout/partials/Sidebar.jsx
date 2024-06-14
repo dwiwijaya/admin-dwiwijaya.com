@@ -31,7 +31,7 @@ const Sidebar = ({ className, lastUpdate }) => {
                 setToggle(false);
             }
         };
-        document.querySelector('main').classList.toggle('sidebar-expanded', toggle);
+        document.querySelector('.main').classList.toggle('sidebar-expanded', toggle);
 
         const handleBodyScroll = () => {
             if (toggle) {
