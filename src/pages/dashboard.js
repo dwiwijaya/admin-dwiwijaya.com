@@ -5,9 +5,11 @@ import React from 'react'
 
 const dashboard = () => {
   return (
+    <>
     <Container>
         <Dashboard/>
     </Container>
+    </>
   )
 }
 

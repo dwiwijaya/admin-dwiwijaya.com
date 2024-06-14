@@ -2,15 +2,19 @@ import PageHeading from '@/components/common/PageHeading'
 import Container from '@/components/layout/Container'
 import SkillForm from '@/components/views/skill/SkillForm'
 import getDocument from '@/services/firebase/crud/getDocument'
+import { NextSeo } from 'next-seo'
 import React from 'react'
 
-const update = ({data}) => {
+const update = ({ data }) => {
     return (
-        <Container>
-            <PageHeading title="View Skill">
-            </PageHeading>
-            <SkillForm action="update" initialData={data}/>
-        </Container>
+        <>
+            <NextSeo title={`Update Skill - ${data?.name}`} />
+            <Container>
+                <PageHeading title="View Skill">
+                </PageHeading>
+                <SkillForm action="update" initialData={data} />
+            </Container>
+        </>
     )
 }
 

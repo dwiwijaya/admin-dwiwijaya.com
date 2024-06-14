@@ -3,15 +3,19 @@ import Container from '@/components/layout/Container'
 import PortfolioForm from '@/components/views/portfolio/PortfolioForm'
 import getCollecction from '@/services/firebase/crud/getCollecction'
 import getDocument from '@/services/firebase/crud/getDocument'
+import { NextSeo } from 'next-seo'
 import React from 'react'
 
 const update = ({ data, skills }) => {
     return (
-        <Container>
-            <PageHeading title="Update Portfolio">
-            </PageHeading>
-            <PortfolioForm action="update" initialData={data} skills={skills} />
-        </Container>
+        <>
+            <NextSeo title={`Update Portfolio - ${data?.name}`} />
+            <Container>
+                <PageHeading title="Update Portfolio">
+                </PageHeading>
+                <PortfolioForm action="update" initialData={data} skills={skills} />
+            </Container>
+        </>
     )
 }
 

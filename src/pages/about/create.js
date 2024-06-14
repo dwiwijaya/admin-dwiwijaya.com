@@ -7,11 +7,14 @@ import React from 'react'
 
 const create = () => {
   return (
-    <Container>
-      <PageHeading title="Create About">
-      </PageHeading>
-      <AboutForm action="create"/>
-    </Container>
+    <>
+      <NextSeo title='Create About' />
+      <Container>
+        <PageHeading title="Create About">
+        </PageHeading>
+        <AboutForm action="create" />
+      </Container>
+    </>
   )
 }
 

@@ -8,10 +8,13 @@ import React from "react";
 
 const create = () => {
   return (
-    <Container>
-      <PageHeading title="Create Blog" />
-      <CreateBlog />
-    </Container>
+    <>
+      <NextSeo title='Skillset - Dwi Wijaya' />
+      <Container>
+        <PageHeading title="Create Blog" />
+        <CreateBlog />
+      </Container>
+    </>
   );
 };
 

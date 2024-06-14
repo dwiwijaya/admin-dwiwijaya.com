@@ -22,7 +22,7 @@ export const MENU_ITEMS = [
     {
         href: "/experience",
         iconClass: "fad fa-graduation-cap",
-        label: "About",
+        label: "Experience",
     },
     {
         href: "/portfolio",
