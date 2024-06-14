@@ -68,7 +68,7 @@ const Dashboard = ({ initialData }) => {
                 </div>
                 <select
                     id="range-select"
-                    className='!p-1 border border-stroke rounded-md !px-2'
+                    className='!p-1 bg-container border border-stroke rounded-md !px-2'
                     value={range}
                     onChange={(e) => setRange(e.target.value)}
                 >
