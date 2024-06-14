@@ -1,5 +1,4 @@
 import Image from 'next/image';
-import loginImage from '@/assets/login.jpg'
 import { useForm } from 'react-hook-form';
 import ErrorInput from '../common/ErrorInput';
 import { SignIn } from '@/services/firebase/config';

@@ -14,3 +14,10 @@ export default function Home() {
     </Container>
   );
 }
+export const getStaticProps = async () => {
+
+  return {
+      props: {
+      },
+  };
+};
