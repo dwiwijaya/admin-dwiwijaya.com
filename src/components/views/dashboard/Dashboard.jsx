@@ -105,14 +105,14 @@ const Dashboard = ({ initialData }) => {
                 <DashboardCard
                     title="Bounce Rate"
                     value={(bounces.value / visitors.value) * 100}
-                    change={changeBounceRate.toFixed(0)}
+                    change={`${changeBounceRate.toFixed(0)}%`}
                     valueType="percent"
                     color="red"
                 />
                 <DashboardCard
                     title="Avg visit time"
                     value={formatShortTime(totalsecond)}
-                    change={changeTotalsecond.toFixed(0)}
+                    change={`${changeTotalsecond.toFixed(0)}s`}
                     color="green"
                 />
             </div>
