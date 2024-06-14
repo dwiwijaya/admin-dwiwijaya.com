@@ -1,5 +1,5 @@
 import PageHeading from '@/components/common/PageHeading'
-import Container from '@/components/layout/Container'
+import Container from '@/components/layout/partials/Container'
 import AboutForm from '@/components/views/about/AboutForm'
 import WithProtected from '@/hoc/withProtected'
 import Link from 'next/link'

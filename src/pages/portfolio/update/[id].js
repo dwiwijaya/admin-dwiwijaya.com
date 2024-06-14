@@ -1,5 +1,5 @@
 import PageHeading from '@/components/common/PageHeading'
-import Container from '@/components/layout/Container'
+import Container from '@/components/layout/partials/Container'
 import PortfolioForm from '@/components/views/portfolio/PortfolioForm'
 import getCollecction from '@/services/firebase/crud/getCollecction'
 import getDocument from '@/services/firebase/crud/getDocument'

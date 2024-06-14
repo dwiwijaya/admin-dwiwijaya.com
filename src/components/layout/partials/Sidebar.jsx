@@ -9,8 +9,8 @@ import Link from 'next/link';
 import dynamic from 'next/dynamic';
 import { useRouter } from 'next/router';
 import { usePathname } from 'next/navigation';
-import ThemeToggle from '../toggles/ThemeToggle';
-import SignoutToggle from '../toggles/SignoutToggle';
+import ThemeToggle from '../../toggles/ThemeToggle';
+import SignoutToggle from '../../toggles/SignoutToggle';
 import { useUser } from '@/context/user';
 
 const Sidebar = ({ className, lastUpdate }) => {

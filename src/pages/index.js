@@ -2,7 +2,7 @@ import Image from "next/image";
 import { Inter } from "next/font/google";
 import LoginForm from "@/components/form/LoginForm";
 import { useUser } from "@/context/user";
-import Container from "@/components/layout/Container";
+import Container from "@/components/layout/partials/Container";
 import Dashboard from "@/components/views/dashboard/Dashboard";
 import { NextSeo } from "next-seo";
 const inter = Inter({ subsets: ["latin"] });

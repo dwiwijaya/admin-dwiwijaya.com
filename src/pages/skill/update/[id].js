@@ -1,5 +1,5 @@
 import PageHeading from '@/components/common/PageHeading'
-import Container from '@/components/layout/Container'
+import Container from '@/components/layout/partials/Container'
 import SkillForm from '@/components/views/skill/SkillForm'
 import getDocument from '@/services/firebase/crud/getDocument'
 import { NextSeo } from 'next-seo'

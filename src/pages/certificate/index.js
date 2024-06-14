@@ -1,5 +1,5 @@
 import PageHeading from '@/components/common/PageHeading'
-import Container from '@/components/layout/Container'
+import Container from '@/components/layout/partials/Container'
 import CertificateTable from '@/components/views/certificate/Table'
 import WithProtected from '@/hoc/withProtected'
 import getCollecction from '@/services/firebase/crud/getCollecction'

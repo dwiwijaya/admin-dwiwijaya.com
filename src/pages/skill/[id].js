@@ -1,5 +1,5 @@
 import PageHeading from '@/components/common/PageHeading'
-import Container from '@/components/layout/Container'
+import Container from '@/components/layout/partials/Container'
 import DetailSkill from '@/components/views/skill/DetailSkill'
 import getDocument from '@/services/firebase/crud/getDocument'
 import { getDoc } from 'firebase/firestore'

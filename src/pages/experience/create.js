@@ -1,5 +1,5 @@
 import PageHeading from '@/components/common/PageHeading'
-import Container from '@/components/layout/Container'
+import Container from '@/components/layout/partials/Container'
 import ExperienceForm from '@/components/views/experience/ExperienceForm'
 import WithProtected from '@/hoc/withProtected'
 import { NextSeo } from 'next-seo'

@@ -1,5 +1,5 @@
 import PageHeading from '@/components/common/PageHeading'
-import Container from '@/components/layout/Container'
+import Container from '@/components/layout/partials/Container'
 import ExperienceTable from '@/components/views/experience/Table'
 import WithProtected from '@/hoc/withProtected'
 import { deleteDocument } from '@/services/firebase/crud/deleteDocument'
