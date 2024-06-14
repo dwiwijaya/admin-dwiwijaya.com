@@ -85,7 +85,7 @@ const Dashboard = ({ initialData }) => {
                     value={activeUser.x ? activeUser.x : 0}
                 />
                 <DashboardCard
-                    title="Page Views"
+                    title="Views"
                     value={pageviews.value}
                     change={pageviews.change}
                     color="green"
