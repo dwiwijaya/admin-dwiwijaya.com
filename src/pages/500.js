@@ -1,10 +1,12 @@
 import Container from '@/components/layout/Container'
+import { NextSeo } from 'next-seo'
 import Link from 'next/link'
 import React from 'react'
 
 const Custom500 = () => {
     return (
         <Container>
+            <NextSeo title="500 - Internal Server Error" />
             <section className="">
                 <div className="py-8 px-4 mx-auto max-w-screen-xl lg:py-16 lg:px-6 mt-14">
                     <div className="mx-auto max-w-screen-sm text-center">
