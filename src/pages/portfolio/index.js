@@ -8,18 +8,18 @@ import Link from 'next/link'
 import React from 'react'
 import { SWRConfig } from 'swr'
 
-const index = ({fallback}) => {
+const index = ({ data }) => {
 
   return (
-    <SWRConfig value={{ fallback }}>
+    <>
       <NextSeo title='Portfolio - Dwi Wijaya' />
       <Container>
         <PageHeading title="Portfolio">
           <Link className='btn !px-2 !py-0' href="/portfolio/create"><i className='text-xl bx bx-list-plus'></i> Create</Link>
         </PageHeading>
-        <PortfolioTable />
+        <PortfolioTable data={data} />
       </Container>
-    </SWRConfig>
+    </>
   )
 }
 
@@ -27,11 +27,9 @@ export default WithProtected(index);
 export const getServerSideProps = async () => {
 
   const { result } = await getCollecction("portfolio");
-    return {
+  return {
     props: {
-      fallback: {
-        '/api/portfolio': result
-      }
+      data: result
     }
   }
 };

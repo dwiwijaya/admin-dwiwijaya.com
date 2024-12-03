@@ -9,9 +9,7 @@ import PopupModal from '@/components/elements/PopupModal';
 import ButtonActionColumn from '@/components/elements/ButtonActionColumn';
 import { deleteFile } from '@/services/firebase/fileHandler';
 
-const portfolioTable = () => {
-    const { data } = useSWR('/api/portfolio', fetcher);
-
+const portfolioTable = ({ data }) => {
     const [openModal, setOpenModal] = useState(false);
     const [IsLoading, setIsLoading] = useState(false);
     const [currentPage, setCurrentPage] = useState(1); 
